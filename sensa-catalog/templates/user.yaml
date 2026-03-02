@@ -1,0 +1,15 @@
+apiVersion: sensa.io/v1alpha1
+kind: User
+metadata:
+  name: <username>  # kebab-case, único
+  namespace: catalog
+  annotations:
+    sensa.io/description: "<cargo ou função, mínimo 5 caracteres>"
+spec:
+  displayName: "<Nome Completo>"
+  email: "user@example.com"
+  memberOf:
+    - <group-name>
+  keycloak:
+    username: <keycloak-username>
+    realm: sensa

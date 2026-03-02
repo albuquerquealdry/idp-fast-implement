@@ -1,0 +1,18 @@
+apiVersion: sensa.io/v1alpha1
+kind: Group
+metadata:
+  name: payments-squad
+  namespace: catalog
+  annotations:
+    sensa.io/description: "Squad responsável pelo desenvolvimento e manutenção do Payment Gateway"
+spec:
+  displayName: "Payments Squad"
+  type: squad
+  members:
+    - joao-silva
+    - maria-santos
+  contact:
+    email: "payments-squad@sensa.io"
+    slack: "#payments-squad"
+    manager: joao-silva
+  parent: platform-team

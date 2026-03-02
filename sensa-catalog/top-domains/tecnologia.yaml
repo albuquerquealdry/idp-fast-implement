@@ -1,0 +1,13 @@
+apiVersion: sensa.io/v1alpha1
+kind: TopDomain
+metadata:
+  name: tecnologia
+  namespace: catalog
+  labels:
+    sensa.io/owner: platform-team
+  annotations:
+    sensa.io/description: "Domínio de negócio responsável por infraestrutura e plataforma tecnológica"
+spec:
+  displayName: "Tecnologia"
+  businessUnit: "CTO"
+  owner: platform-team

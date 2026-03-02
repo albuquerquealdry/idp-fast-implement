@@ -1,0 +1,14 @@
+apiVersion: sensa.io/v1alpha1
+kind: Domain
+metadata:
+  name: plataforma
+  namespace: catalog
+  labels:
+    sensa.io/owner: platform-team
+    sensa.io/top-domain: tecnologia
+  annotations:
+    sensa.io/description: "Área responsável por serviços compartilhados e infraestrutura de plataforma"
+spec:
+  displayName: "Plataforma"
+  topDomain: tecnologia
+  owner: platform-team

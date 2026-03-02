@@ -1,0 +1,20 @@
+apiVersion: sensa.io/v1alpha1
+kind: System
+metadata:
+  name: payment-gateway
+  namespace: catalog
+  labels:
+    sensa.io/owner: payments-squad
+    sensa.io/domain: pagamentos
+    sensa.io/top-domain: financeiro
+  annotations:
+    sensa.io/description: "Sistema de gateway de pagamentos que processa transações com múltiplos provedores"
+spec:
+  displayName: "Payment Gateway"
+  domain: pagamentos
+  owner: payments-squad
+  lifecycle: production
+  environments:
+    - dev
+    - qa
+    - prod

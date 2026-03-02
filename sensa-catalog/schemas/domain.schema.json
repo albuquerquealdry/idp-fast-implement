@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sensa.io/schemas/domain.schema.json",
+  "title": "Domain",
+  "description": "Área de negócio específica dentro de um TopDomain",
+  "type": "object",
+  "required": ["apiVersion", "kind", "metadata", "spec"],
+  "properties": {
+    "apiVersion": {
+      "type": "string",
+      "const": "sensa.io/v1alpha1"
+    },
+    "kind": {
+      "type": "string",
+      "const": "Domain"
+    },
+    "metadata": {
+      "type": "object",
+      "required": ["name", "namespace", "labels", "annotations"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "pattern": "^[a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?$",
+          "maxLength": 63
+        },
+        "namespace": {
+          "type": "string",
+          "const": "catalog"
+        },
+        "labels": {
+          "type": "object",
+          "required": ["sensa.io/owner", "sensa.io/top-domain"],
+          "properties": {
+            "sensa.io/owner": {
+              "type": "string",
+              "pattern": "^[a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?$"
+            },
+            "sensa.io/top-domain": {
+              "type": "string",
+              "pattern": "^[a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?$"
+            }
+          },
+          "additionalProperties": true
+        },
+        "annotations": {
+          "type": "object",
+          "required": ["sensa.io/description"],
+          "properties": {
+            "sensa.io/description": {
+              "type": "string",
+              "minLength": 10
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "spec": {
+      "type": "object",
+      "required": ["displayName", "topDomain", "owner"],
+      "properties": {
+        "displayName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "topDomain": {
+          "type": "string",
+          "pattern": "^[a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?$"
+        },
+        "owner": {
+          "type": "string",
+          "pattern": "^[a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?$"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

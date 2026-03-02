@@ -1,0 +1,15 @@
+apiVersion: sensa.io/v1alpha1
+kind: User
+metadata:
+  name: pedro-oliveira
+  namespace: catalog
+  annotations:
+    sensa.io/description: "Platform Engineer - Platform Team"
+spec:
+  displayName: "Pedro Oliveira"
+  email: "pedro.oliveira@sensa.io"
+  memberOf:
+    - platform-team
+  keycloak:
+    username: pedro.oliveira
+    realm: sensa

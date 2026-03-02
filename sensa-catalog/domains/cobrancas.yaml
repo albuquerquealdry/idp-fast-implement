@@ -1,0 +1,14 @@
+apiVersion: sensa.io/v1alpha1
+kind: Domain
+metadata:
+  name: cobrancas
+  namespace: catalog
+  labels:
+    sensa.io/owner: payments-squad
+    sensa.io/top-domain: financeiro
+  annotations:
+    sensa.io/description: "Área responsável por faturamento, cobranças recorrentes e gestão de inadimplência"
+spec:
+  displayName: "Cobranças"
+  topDomain: financeiro
+  owner: payments-squad

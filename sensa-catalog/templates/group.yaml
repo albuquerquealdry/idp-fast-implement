@@ -1,0 +1,17 @@
+apiVersion: sensa.io/v1alpha1
+kind: Group
+metadata:
+  name: <group-name>  # kebab-case, único
+  namespace: catalog
+  annotations:
+    sensa.io/description: "<descrição da equipe, mínimo 10 caracteres>"
+spec:
+  displayName: "<Nome Legível>"
+  type: <team|squad|chapter|guild>
+  members:
+    - <user-name>
+  contact:
+    email: "team@example.com"
+    slack: "#team-channel"
+    manager: <user-name>
+  parent: <parent-group-name>  # opcional

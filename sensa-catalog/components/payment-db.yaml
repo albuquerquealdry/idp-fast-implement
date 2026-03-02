@@ -1,0 +1,33 @@
+apiVersion: sensa.io/v1alpha1
+kind: Component
+metadata:
+  name: payment-db
+  namespace: catalog
+  labels:
+    sensa.io/owner: payments-squad
+    sensa.io/system: payment-gateway
+    sensa.io/type: database
+    sensa.io/environment: all
+  annotations:
+    sensa.io/description: "PostgreSQL database para armazenamento de transações e estado de pagamentos"
+spec:
+  displayName: "Payment Database"
+  type: database
+  system: payment-gateway
+  owner: payments-squad
+  lifecycle: production
+  
+  repository:
+    name: payment-gateway-repo
+    path: database/migrations
+  
+  environments:
+    - name: dev
+      namespace: payment-gateway-dev
+      cluster: dev-cluster-01
+    - name: qa
+      namespace: payment-gateway-qa
+      cluster: qa-cluster-01
+    - name: prod
+      namespace: payment-gateway-prod
+      cluster: prod-cluster-02

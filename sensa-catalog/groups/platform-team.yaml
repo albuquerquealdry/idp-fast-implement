@@ -1,0 +1,17 @@
+apiVersion: sensa.io/v1alpha1
+kind: Group
+metadata:
+  name: platform-team
+  namespace: catalog
+  annotations:
+    sensa.io/description: "Equipe responsável pela plataforma interna e ferramentas de desenvolvedor"
+spec:
+  displayName: "Platform Team"
+  type: team
+  members:
+    - joao-silva
+    - pedro-oliveira
+  contact:
+    email: "platform-team@sensa.io"
+    slack: "#platform-team"
+    manager: pedro-oliveira

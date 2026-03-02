@@ -1,0 +1,20 @@
+apiVersion: sensa.io/v1alpha1
+kind: System
+metadata:
+  name: platform-services
+  namespace: catalog
+  labels:
+    sensa.io/owner: platform-team
+    sensa.io/domain: plataforma
+    sensa.io/top-domain: tecnologia
+  annotations:
+    sensa.io/description: "Conjunto de serviços compartilhados da plataforma (notificações, autenticação, logging)"
+spec:
+  displayName: "Platform Services"
+  domain: plataforma
+  owner: platform-team
+  lifecycle: production
+  environments:
+    - dev
+    - qa
+    - prod

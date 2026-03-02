@@ -1,0 +1,14 @@
+apiVersion: sensa.io/v1alpha1
+kind: Domain
+metadata:
+  name: <domain-name>  # kebab-case, único
+  namespace: catalog
+  labels:
+    sensa.io/owner: <group-name>
+    sensa.io/top-domain: <top-domain-name>
+  annotations:
+    sensa.io/description: "<descrição clara da área de negócio, mínimo 10 caracteres>"
+spec:
+  displayName: "<Nome Legível>"
+  topDomain: <top-domain-name>
+  owner: <group-name>

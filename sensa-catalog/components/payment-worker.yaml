@@ -1,0 +1,41 @@
+apiVersion: sensa.io/v1alpha1
+kind: Component
+metadata:
+  name: payment-worker
+  namespace: catalog
+  labels:
+    sensa.io/owner: payments-squad
+    sensa.io/system: payment-gateway
+    sensa.io/type: service
+    sensa.io/environment: all
+  annotations:
+    sensa.io/description: "Worker assíncrono para processamento de callbacks e reconciliação de pagamentos"
+spec:
+  displayName: "Payment Worker"
+  type: service
+  system: payment-gateway
+  owner: payments-squad
+  lifecycle: production
+  
+  repository:
+    name: payment-gateway-repo
+    path: services/payment-worker
+  
+  dependsOn:
+    - component: payment-db
+      type: hard
+      reason: "Atualiza estado das transações"
+    - component: payment-queue
+      type: hard
+      reason: "Consome eventos de pagamento"
+  
+  environments:
+    - name: dev
+      namespace: payment-gateway-dev
+      cluster: dev-cluster-01
+    - name: qa
+      namespace: payment-gateway-qa
+      cluster: qa-cluster-01
+    - name: prod
+      namespace: payment-gateway-prod
+      cluster: prod-cluster-01

@@ -1,0 +1,20 @@
+apiVersion: sensa.io/v1alpha1
+kind: System
+metadata:
+  name: <system-name>  # kebab-case, único
+  namespace: catalog
+  labels:
+    sensa.io/owner: <group-name>
+    sensa.io/domain: <domain-name>
+    sensa.io/top-domain: <top-domain-name>
+  annotations:
+    sensa.io/description: "<descrição clara do sistema, mínimo 10 caracteres>"
+spec:
+  displayName: "<Nome Legível>"
+  domain: <domain-name>  # ou subdomain-name
+  owner: <group-name>
+  lifecycle: <experimental|development|production|deprecated|retired>
+  environments:
+    - dev
+    - qa
+    - prod

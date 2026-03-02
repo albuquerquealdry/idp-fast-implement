@@ -1,0 +1,29 @@
+apiVersion: sensa.io/v1alpha1
+kind: Component
+metadata:
+  name: payment-queue
+  namespace: catalog
+  labels:
+    sensa.io/owner: payments-squad
+    sensa.io/system: payment-gateway
+    sensa.io/type: queue
+    sensa.io/environment: all
+  annotations:
+    sensa.io/description: "RabbitMQ queue para eventos assíncronos de pagamento"
+spec:
+  displayName: "Payment Queue"
+  type: queue
+  system: payment-gateway
+  owner: payments-squad
+  lifecycle: production
+  
+  environments:
+    - name: dev
+      namespace: payment-gateway-dev
+      cluster: dev-cluster-01
+    - name: qa
+      namespace: payment-gateway-qa
+      cluster: qa-cluster-01
+    - name: prod
+      namespace: payment-gateway-prod
+      cluster: prod-cluster-01

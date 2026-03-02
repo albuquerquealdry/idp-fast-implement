@@ -1,0 +1,44 @@
+apiVersion: sensa.io/v1alpha1
+kind: Component
+metadata:
+  name: <component-name>  # kebab-case, único
+  namespace: catalog
+  labels:
+    sensa.io/owner: <group-name>
+    sensa.io/system: <system-name>
+    sensa.io/type: <service|library|database|queue|cache|frontend|other>
+    sensa.io/environment: <dev|qa|prod|staging|all>
+  annotations:
+    sensa.io/description: "<descrição clara do componente, mínimo 10 caracteres>"
+spec:
+  displayName: "<Nome Legível>"
+  type: <service|library|database|queue|cache|frontend|other>
+  system: <system-name>
+  owner: <group-name>
+  lifecycle: <experimental|development|production|deprecated|retired>
+  
+  # Repositório (opcional)
+  repository:
+    name: <repository-name>
+    path: <path-dentro-do-repo>  # opcional para monorepos
+  
+  # Dependências (opcional)
+  dependsOn:
+    - component: <component-name>
+      type: <hard|soft>
+      reason: "<motivo da dependência>"
+  
+  # Ambientes (obrigatório, mínimo 1)
+  environments:
+    - name: dev
+      url: "https://component.dev.example.com"  # opcional
+      namespace: <k8s-namespace>
+      cluster: <cluster-name>
+    - name: qa
+      url: "https://component.qa.example.com"
+      namespace: <k8s-namespace>
+      cluster: <cluster-name>
+    - name: prod
+      url: "https://component.example.com"
+      namespace: <k8s-namespace>
+      cluster: <cluster-name>

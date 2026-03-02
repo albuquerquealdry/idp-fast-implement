@@ -1,0 +1,37 @@
+# Sensa Catalog CODEOWNERS
+# Cada linha define quem é responsável por aprovar mudanças em arquivos específicos
+
+# Platform team owns schemas and root structure
+/schemas/                    @platform-team
+/scripts/                    @platform-team
+/README.md                   @platform-team
+/SCHEMA_VERSION              @platform-team
+/CODEOWNERS                  @platform-team
+
+# Top domains - Platform team
+/top-domains/                @platform-team
+
+# Domains
+/domains/pagamentos.yaml     @payments-squad
+/domains/cobrancas.yaml      @payments-squad
+/domains/plataforma.yaml     @platform-team
+
+# Systems
+/systems/payment-gateway.yaml @payments-squad
+/systems/platform-services.yaml @platform-team
+
+# Components - Payment Gateway
+/components/payment-*.yaml   @payments-squad
+
+# Components - Platform
+/components/notification-*.yaml @platform-team
+
+# Repositories
+/repositories/payment-gateway-repo.yaml @payments-squad
+
+# Groups and users - Platform team manages
+/groups/                     @platform-team
+/users/                      @platform-team
+
+# Default - Platform team reviews everything not explicitly assigned
+*                            @platform-team

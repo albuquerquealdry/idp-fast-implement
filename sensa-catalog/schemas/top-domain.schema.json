@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sensa.io/schemas/top-domain.schema.json",
+  "title": "TopDomain",
+  "description": "Domínio de negócio de mais alto nível",
+  "type": "object",
+  "required": ["apiVersion", "kind", "metadata", "spec"],
+  "properties": {
+    "apiVersion": {
+      "type": "string",
+      "const": "sensa.io/v1alpha1"
+    },
+    "kind": {
+      "type": "string",
+      "const": "TopDomain"
+    },
+    "metadata": {
+      "type": "object",
+      "required": ["name", "namespace", "labels", "annotations"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "pattern": "^[a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?$",
+          "maxLength": 63
+        },
+        "namespace": {
+          "type": "string",
+          "const": "catalog"
+        },
+        "labels": {
+          "type": "object",
+          "required": ["sensa.io/owner"],
+          "properties": {
+            "sensa.io/owner": {
+              "type": "string",
+              "pattern": "^[a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?$"
+            }
+          },
+          "additionalProperties": true
+        },
+        "annotations": {
+          "type": "object",
+          "required": ["sensa.io/description"],
+          "properties": {
+            "sensa.io/description": {
+              "type": "string",
+              "minLength": 10
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "spec": {
+      "type": "object",
+      "required": ["displayName", "owner"],
+      "properties": {
+        "displayName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "businessUnit": {
+          "type": "string"
+        },
+        "owner": {
+          "type": "string",
+          "pattern": "^[a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?$"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

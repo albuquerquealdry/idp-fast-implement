@@ -1,0 +1,15 @@
+apiVersion: sensa.io/v1alpha1
+kind: User
+metadata:
+  name: maria-santos
+  namespace: catalog
+  annotations:
+    sensa.io/description: "Senior Software Engineer - Payments Squad"
+spec:
+  displayName: "Maria Santos"
+  email: "maria.santos@sensa.io"
+  memberOf:
+    - payments-squad
+  keycloak:
+    username: maria.santos
+    realm: sensa

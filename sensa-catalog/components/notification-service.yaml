@@ -1,0 +1,32 @@
+apiVersion: sensa.io/v1alpha1
+kind: Component
+metadata:
+  name: notification-service
+  namespace: catalog
+  labels:
+    sensa.io/owner: platform-team
+    sensa.io/system: platform-services
+    sensa.io/type: service
+    sensa.io/environment: all
+  annotations:
+    sensa.io/description: "Serviço centralizado de notificações via email, SMS e push"
+spec:
+  displayName: "Notification Service"
+  type: service
+  system: platform-services
+  owner: platform-team
+  lifecycle: production
+  
+  environments:
+    - name: dev
+      url: "https://notifications.dev.sensa.io"
+      namespace: platform-dev
+      cluster: dev-cluster-01
+    - name: qa
+      url: "https://notifications.qa.sensa.io"
+      namespace: platform-qa
+      cluster: qa-cluster-01
+    - name: prod
+      url: "https://notifications.sensa.io"
+      namespace: platform-prod
+      cluster: prod-cluster-01

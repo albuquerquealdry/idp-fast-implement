@@ -1,0 +1,16 @@
+apiVersion: sensa.io/v1alpha1
+kind: User
+metadata:
+  name: joao-silva
+  namespace: catalog
+  annotations:
+    sensa.io/description: "Tech Lead - Payments Squad"
+spec:
+  displayName: "João Silva"
+  email: "joao.silva@sensa.io"
+  memberOf:
+    - payments-squad
+    - platform-team
+  keycloak:
+    username: joao.silva
+    realm: sensa

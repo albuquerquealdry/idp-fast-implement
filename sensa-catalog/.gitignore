@@ -1,0 +1,29 @@
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.bak
+*.log
+
+# Node modules (for validation tools)
+node_modules/
+package-lock.json
+
+# Python (for validation scripts)
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Validation output
+validation-report.json
+validation-report.html
