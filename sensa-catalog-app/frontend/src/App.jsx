@@ -25,6 +25,7 @@ function App() {
             <Route path="/groups" element={<Groups />} />
             <Route path="/search" element={<Search />} />
             <Route path="/dependencies" element={<Dependencies />} />
+            <Route path="/validation" element={<Validation />} />
           </Routes>
         </main>
       </div>

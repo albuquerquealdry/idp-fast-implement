@@ -17,6 +17,7 @@ export function Navbar() {
     { path: '/components', icon: GitBranch, label: 'Componentes' },
     { path: '/groups', icon: Users, label: 'Grupos' },
     { path: '/dependencies', icon: Network, label: 'Dependências' },
+    { path: '/validation', icon: Database, label: 'Validação' },
     { path: '/search', icon: Search, label: 'Busca' }
   ]
 

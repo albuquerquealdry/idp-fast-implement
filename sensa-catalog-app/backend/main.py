@@ -216,12 +216,53 @@ async def get_hierarchy():
                     'name': d_name,
                     'displayName': d.get('spec', {}).get('displayName', d_name),
                     'owner': d.get('spec', {}).get('owner'),
+                    'subdomains': [],
                     'systems': []
                 }
                 
-                # Systems
+                # SubDomains
+                for sd_name, sd in entities.get('SubDomain', {}).items():
+                    if sd.get('spec', {}).get('domain') == d_name:
+                        sd_node = {
+                            'kind': 'SubDomain',
+                            'name': sd_name,
+                            'displayName': sd.get('spec', {}).get('displayName', sd_name),
+                            'owner': sd.get('spec', {}).get('owner'),
+                            'systems': []
+                        }
+                        
+                        # Systems in SubDomain
+                        for s_name, s in entities.get('System', {}).items():
+                            if s.get('spec', {}).get('subdomain') == sd_name:
+                                s_node = {
+                                    'kind': 'System',
+                                    'name': s_name,
+                                    'displayName': s.get('spec', {}).get('displayName', s_name),
+                                    'owner': s.get('spec', {}).get('owner'),
+                                    'lifecycle': s.get('spec', {}).get('lifecycle'),
+                                    'components': []
+                                }
+                                
+                                # Components
+                                for c_name, c in entities.get('Component', {}).items():
+                                    if c.get('spec', {}).get('system') == s_name:
+                                        c_node = {
+                                            'kind': 'Component',
+                                            'name': c_name,
+                                            'displayName': c.get('spec', {}).get('displayName', c_name),
+                                            'type': c.get('spec', {}).get('type'),
+                                            'lifecycle': c.get('spec', {}).get('lifecycle'),
+                                            'owner': c.get('spec', {}).get('owner')
+                                        }
+                                        s_node['components'].append(c_node)
+                                
+                                sd_node['systems'].append(s_node)
+                        
+                        d_node['subdomains'].append(sd_node)
+                
+                # Systems directly in Domain (without SubDomain)
                 for s_name, s in entities.get('System', {}).items():
-                    if s.get('spec', {}).get('domain') == d_name:
+                    if s.get('spec', {}).get('domain') == d_name and not s.get('spec', {}).get('subdomain'):
                         s_node = {
                             'kind': 'System',
                             'name': s_name,
